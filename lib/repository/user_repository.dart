@@ -51,7 +51,7 @@ class UserRepository implements UserRepositoryAbs {
     response['token'] = auth?.accessToken;
 
     if (kDebugMode) {
-      //print(auth?.accessToken);
+      print(auth?.accessToken);
     }
     return UserApp.fromJson(response);
   }
