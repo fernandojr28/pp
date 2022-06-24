@@ -1,7 +1,7 @@
-//import 'package:pp/abstract/abs.dart';
+import 'package:pp/abstract/abs.dart';
 //import 'package:pp/redux/middleware/app_middleware.dart';
-//import 'package:pp/redux/middleware/auth_middleware.dart';
-//import 'package:pp/repository/repository.dart';
+import 'package:pp/redux/middleware/auth_middleware.dart';
+import 'package:pp/repository/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
@@ -11,18 +11,17 @@ import 'package:pp/theme.dart';
 import 'package:pp/models/app_state.dart';
 import 'package:pp/routes.dart';
 
-Future<void> main(//{
-  //UserRepositoryAbs? userRepository,
+Future<void> main({
+  UserRepositoryAbs? userRepository,
   //AppRepositoryAbs? appRepository,
-//}
-) async {
+}) async {
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   //final AppRepository appRepository = AppRepository();
-  //final UserRepository userRepository = UserRepository();
+  final UserRepository userRepository = UserRepository();
 
   runApp(MultiservicesApp(
-    //userRepository: userRepository,
+    userRepository: userRepository,
     //appRepository: appRepository,
     navigatorKey: navigatorKey,
   ));
@@ -36,18 +35,18 @@ class MultiservicesApp extends StatelessWidget {
 
   MultiservicesApp({
     Key? key,
-    //required UserRepositoryAbs userRepository,
+    required UserRepositoryAbs userRepository,
     //required AppRepository appRepository,
     required GlobalKey<NavigatorState> navigatorKey,
   }) : navigatorKey = navigatorKey,
        store = Store<AppState>(
         appReducer,
         initialState: AppState.loading(),
-        //middleware: [
-          //...createAuthMiddleware(
-           // navigatorKey, UserRepository()),
+        middleware: [
+          ...createAuthMiddleware(
+          navigatorKey, UserRepository()),
           //...createAppMiddleware(AppRepository())
-        //]
+        ]
        ),
       super(key: key) {
         //store.dispatch(InitAppAction());

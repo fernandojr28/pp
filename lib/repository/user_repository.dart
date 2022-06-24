@@ -4,13 +4,13 @@ import 'package:pp/models/user_app.dart';
 import 'package:pp/abstract/user_repository_abs.dart';
 //import 'package:pp/helpers/api_helpers.dart';
 //import 'package:pp/helpers/http_client.dart';
-//import 'package:google_sign_in/google_sign_in.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 //import 'package:http/http.dart' as http;
 //import 'package:pp/settings/settings.dart';
 import 'package:flutter/foundation.dart';
 //import 'package:googleapis/gmail/v1.dart' as gmail;
 
-//final GoogleSignIn _googleSignIn = GoogleSignIn.standard(scopes: ['https://www.googleapis.com/auth/gmail.readonly']);
+final GoogleSignIn _googleSignIn = GoogleSignIn.standard(scopes: ['https://www.googleapis.com/auth/gmail.readonly']);
 
 
 class UserRepository implements UserRepositoryAbs {
@@ -43,12 +43,12 @@ class UserRepository implements UserRepositoryAbs {
   @override
   Future<UserApp> signInWithGoogle() async {
     
-    //await _googleSignIn.signOut();
-    //final GoogleSignInAccount? user = await _googleSignIn.signIn();
-    //final GoogleSignInAuthentication? auth = await user?.authentication;
+    await _googleSignIn.signOut();
+    final GoogleSignInAccount? user = await _googleSignIn.signIn();
+    final GoogleSignInAuthentication? auth = await user?.authentication;
 
     final Map<String, dynamic> response = <String, dynamic>{};
-    //response['token'] = auth?.accessToken;
+    response['token'] = auth?.accessToken;
 
     if (kDebugMode) {
       //print(auth?.accessToken);
