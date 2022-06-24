@@ -1,6 +1,6 @@
 import 'package:pp/models/message.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:pp/models/app_state.dart';
@@ -53,7 +53,7 @@ class _MessageDetailState extends State<MessageDetail> {
           )
         : Column(
           children: [
-            /*
+            
             Expanded(
               child: Html(
                 data: """<table style="width:100%">${message?.bodyPrint}</table>""",
@@ -77,7 +77,8 @@ class _MessageDetailState extends State<MessageDetail> {
                 },
               ),
               
-            ),*/
+            ),
+            
             Row(
               children: [
                 Expanded(

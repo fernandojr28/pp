@@ -1,7 +1,7 @@
 import 'package:pp/presentation/auth/auth_screen.dart';
 import 'package:pp/presentation/home_screen.dart';
 import 'package:pp/presentation/message_detail_screen.dart';
-//import 'package:pp/presentation/print_voucher_screen.dart';
+import 'package:pp/presentation/print_voucher_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:pp/models/app_state.dart';
@@ -39,7 +39,7 @@ MaterialPageRoute getGenerateRoute(RouteSettings settings) {
 
   /*if (isPathNameWithRoute(settings, AppRoutes.printVoucher)) {
     final String messageId = getIdByPath(settings);
-    return MaterialPageRoute<Void>(
+    return MaterialPageRoute(
       settings: settings,
       builder: (BuildContext context) => StoreBuilder<AppState>(
         builder: (context, store) => PrintVoucherScreen(messageId: messageId),

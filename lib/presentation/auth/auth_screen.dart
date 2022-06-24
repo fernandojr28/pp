@@ -71,7 +71,7 @@ Widget _buildBody() {
                   style: TextStyle(color: Colors.white38, fontSize: 12),
                 ),
                 SizedBox(width: 8),
-                Text("Google", style: TextStyle(color: Colors.white))
+                Text("Google xd", style: TextStyle(color: Colors.white))
               ],
             ),
           ),
