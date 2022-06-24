@@ -1,7 +1,7 @@
 import 'package:pp/presentation/auth/auth_screen.dart';
-//import 'package:app_jj/presentation/home_screen.dart';
-//import 'package:app_jj/presentation/message_detail_screen.dart';
-//import 'package:app_jj/presentation/print_voucher_screen.dart';
+import 'package:pp/presentation/home_screen.dart';
+import 'package:pp/presentation/message_detail_screen.dart';
+//import 'package:pp/presentation/print_voucher_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:pp/models/app_state.dart';
@@ -19,15 +19,15 @@ Map<String, WidgetBuilder> getRoutes(context, store){
     AppRoutes.auth: (BuildContext context) => StoreBuilder<AppState>(
       builder: (context, store) => const AuthScreen()
     ),
-    /*AppRoutes.home: (BuildContext context) => StoreBuilder<AppState>(
+    AppRoutes.home: (BuildContext context) => StoreBuilder<AppState>(
       builder: (context, store) => const HomeScreen()
-    )*/
+    )
   };
 }
 
 MaterialPageRoute getGenerateRoute(RouteSettings settings) {
 
-  /*if (isPathNameWithRoute(settings, AppRoutes.messageDetail)) {
+  if (isPathNameWithRoute(settings, AppRoutes.messageDetail)) {
     final String messageId = getIdByPath(settings);
     return MaterialPageRoute(
       settings: settings,
@@ -36,7 +36,6 @@ MaterialPageRoute getGenerateRoute(RouteSettings settings) {
       ),
     );
   }
-  */
 
   /*if (isPathNameWithRoute(settings, AppRoutes.printVoucher)) {
     final String messageId = getIdByPath(settings);

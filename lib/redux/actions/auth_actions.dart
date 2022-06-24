@@ -1,7 +1,7 @@
 
-//import 'package:pp/models/models.dart';
+import 'package:pp/models/models.dart';
 import 'package:flutter/services.dart';
-//import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart';
 
 //typedef void ErrorCallback(dynamic error);
 
@@ -14,19 +14,19 @@ class LogInFailResponseAction {
 
 
 class LogInSuccessfulResponseAction {
-  //final UserApp user;
-  //final VoidCallback? onCompeleted;
-  //final ErrorCallback? onError;
+  final UserApp user;
+  final VoidCallback? onCompeleted;
+  final ErrorCallback? onError;
 
-  //LogInSuccessfulResponseAction(this.user, {this.onError, this.onCompeleted});
+  LogInSuccessfulResponseAction(this.user, {this.onError, this.onCompeleted});
 }
 
 class SignInWithGoogleAndPasswordRequestAction {}
 
 class LoadUserDataSuccessResponseAction {
-  //final UserApp user;
+  final UserApp user;
 
-  //LoadUserDataSuccessResponseAction(this.user);
+  LoadUserDataSuccessResponseAction(this.user);
 }
 
 

@@ -1,11 +1,11 @@
 import 'package:pp/abstract/abs.dart';
-//import 'package:pp/redux/middleware/app_middleware.dart';
+import 'package:pp/redux/middleware/app_middleware.dart';
 import 'package:pp/redux/middleware/auth_middleware.dart';
 import 'package:pp/repository/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-//import 'package:pp/redux/actions/app_actions.dart';
+import 'package:pp/redux/actions/app_actions.dart';
 import 'package:pp/redux/reducers/app_state_reducer.dart';
 import 'package:pp/theme.dart';
 import 'package:pp/models/app_state.dart';
@@ -13,16 +13,16 @@ import 'package:pp/routes.dart';
 
 Future<void> main({
   UserRepositoryAbs? userRepository,
-  //AppRepositoryAbs? appRepository,
+  AppRepositoryAbs? appRepository,
 }) async {
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-  //final AppRepository appRepository = AppRepository();
+  final AppRepository appRepository = AppRepository();
   final UserRepository userRepository = UserRepository();
 
   runApp(MultiservicesApp(
     userRepository: userRepository,
-    //appRepository: appRepository,
+    appRepository: appRepository,
     navigatorKey: navigatorKey,
   ));
 
@@ -36,7 +36,7 @@ class MultiservicesApp extends StatelessWidget {
   MultiservicesApp({
     Key? key,
     required UserRepositoryAbs userRepository,
-    //required AppRepository appRepository,
+    required AppRepository appRepository,
     required GlobalKey<NavigatorState> navigatorKey,
   }) : navigatorKey = navigatorKey,
        store = Store<AppState>(
@@ -45,11 +45,11 @@ class MultiservicesApp extends StatelessWidget {
         middleware: [
           ...createAuthMiddleware(
           navigatorKey, UserRepository()),
-          //...createAppMiddleware(AppRepository())
+          ...createAppMiddleware(AppRepository())
         ]
        ),
       super(key: key) {
-        //store.dispatch(InitAppAction());
+        store.dispatch(InitAppAction());
       }
 
   @override

@@ -1,11 +1,11 @@
 import 'package:pp/abstract/user_repository_abs.dart';
 import 'package:pp/models/models.dart';
-//import 'package:pp/routes.dart';
+import 'package:pp/routes.dart';
 import 'package:redux/redux.dart';
 import 'package:pp/models/app_state.dart';
 import 'package:pp/redux/actions/actions.dart';
 import 'package:flutter/widgets.dart';
-//import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart';
 
 List<Middleware<AppState>> createAuthMiddleware(
   GlobalKey<NavigatorState> navigatorKey,
@@ -16,7 +16,7 @@ List<Middleware<AppState>> createAuthMiddleware(
     TypedMiddleware<AppState, SignInWithGoogleAndPasswordRequestAction>(
       _loInWithGoogleMiddleware(userRepository)),
 
-    /*TypedMiddleware<AppState, LogInSuccessfulResponseAction>(
+    TypedMiddleware<AppState, LogInSuccessfulResponseAction>(
         _loadUserData(userRepository)),
 
     TypedMiddleware<AppState, LoadUserDataSuccessResponseAction>(
@@ -24,8 +24,6 @@ List<Middleware<AppState>> createAuthMiddleware(
 
     TypedMiddleware<AppState, LogInRequiredAction>(
         _navigate(userRepository, navigatorKey)),
-
-    */
   ];
 }
 
@@ -36,7 +34,7 @@ void Function(
 ) _loInWithGoogleMiddleware(UserRepositoryAbs userRepository) {
   return (store, action, NextDispatcher next) async {
     userRepository.signInWithGoogle().then((user) {
-      //store.dispatch(LogInSuccessfulResponseAction(user));
+      store.dispatch(LogInSuccessfulResponseAction(user));
     }).catchError((onError) {
       store.dispatch(LogInFailResponseAction(onError));
     }).whenComplete(() {
@@ -45,7 +43,7 @@ void Function(
   };
 }
 
-/*
+
 
 void Function(
   Store<AppState> store,
@@ -84,4 +82,3 @@ void Function(
     }
   };
 }
-*/

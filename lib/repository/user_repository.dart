@@ -1,12 +1,12 @@
 import 'dart:async';
-//import 'dart:convert';
+import 'dart:convert';
 import 'package:pp/models/user_app.dart';
 import 'package:pp/abstract/user_repository_abs.dart';
-//import 'package:pp/helpers/api_helpers.dart';
-//import 'package:pp/helpers/http_client.dart';
+import 'package:pp/helpers/api_helpers.dart';
+import 'package:pp/helpers/http_client.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-//import 'package:http/http.dart' as http;
-//import 'package:pp/settings/settings.dart';
+import 'package:http/http.dart' as http;
+import 'package:pp/settings/settings.dart';
 import 'package:flutter/foundation.dart';
 //import 'package:googleapis/gmail/v1.dart' as gmail;
 
@@ -15,7 +15,7 @@ final GoogleSignIn _googleSignIn = GoogleSignIn.standard(scopes: ['https://www.g
 
 class UserRepository implements UserRepositoryAbs {
 
-  /*
+  
   @override
   Future<UserApp> fetchUserData(UserApp currentUser) async {
 
@@ -38,7 +38,6 @@ class UserRepository implements UserRepositoryAbs {
       token: currentUser.token
     );
   }
-  */
 
   @override
   Future<UserApp> signInWithGoogle() async {

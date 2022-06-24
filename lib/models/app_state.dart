@@ -1,4 +1,4 @@
-//import 'package:app_jj/models/models.dart';
+import 'package:pp/models/models.dart';
 import 'package:flutter/services.dart';
 import 'package:meta/meta.dart';
 
@@ -6,15 +6,15 @@ import 'package:meta/meta.dart';
 class AppState{
 
   final bool isLoading;
-  //final UserApp? currentUser;
-  //final List<Message> messages;
+  final UserApp? currentUser;
+  final List<Message> messages;
   final PlatformException? platformException;
 
   const AppState({
     this.isLoading = false,
-    //this.currentUser,
+    this.currentUser,
     this.platformException,
-    //this.messages = const []
+    this.messages = const []
   });
 
   factory AppState.loading() =>  const AppState(
@@ -26,23 +26,23 @@ class AppState{
       return AppState.loading();
     } else {
       return AppState.loading().copyWith(
-        //currentUser: UserApp.fromJson(json['current_user']),
+        currentUser: UserApp.fromJson(json['current_user']),
       );
     }
   }
 
   AppState copyWith({
     bool? isLoading,
-    //UserApp? currentUser,
+    UserApp? currentUser,
     PlatformException? platformException,
-    //List<Message>? messages,
-    //Message? message
+    List<Message>? messages,
+    Message? message
   }) => 
   AppState(
     isLoading: isLoading ?? this.isLoading,
-    //currentUser: currentUser ?? this.currentUser,
+    currentUser: currentUser ?? this.currentUser,
     platformException: platformException ?? this.platformException,
-    //messages: messages ?? this.messages
+    messages: messages ?? this.messages
   );
 }
 
